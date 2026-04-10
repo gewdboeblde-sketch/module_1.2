@@ -1,0 +1,86 @@
+product_card_refactored.html<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Карточка товара | AudioMax Pro — рефакторинг</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Микро-кастом: только для @apply (повторяющиеся паттерны) -->
+    <style>
+        /* Группировка стилей кнопки через @apply — улучшает читаемость и переиспользование */
+        .btn-primary {
+            @apply mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl;
+            @apply transition-all duration-300 transform hover:scale-105;
+            @apply flex items-center justify-center gap-2 shadow-md hover:shadow-lg;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 font-sans antialiased">
+
+    <div class="flex items-center justify-center min-h-screen p-4">
+        
+        <!-- СЕМАНТИЧЕСКАЯ ОБЁРТКА: карточка как <article> -->
+        <article class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 max-w-full md:max-w-[800px] w-full overflow-hidden">
+            
+            <div class="flex flex-col md:flex-row">
+                
+                <!-- Блок изображения -->
+                <div class="md:w-2/5 bg-gray-100 flex items-center justify-center p-4">
+                    <img src="https://picsum.photos/id/29/400/400" 
+                         alt="Наушники AudioMax Pro — беспроводные с шумоподавлением"
+                         class="w-full h-auto object-cover rounded-xl shadow-md">
+                </div>
+                
+                <!-- Блок контента -->
+                <div class="md:w-3/5 p-6 flex flex-col gap-3">
+                    
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Наушники AudioMax Pro</h2>
+                    
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        Беспроводные наушники с активным шумоподавлением, 40 часов работы 
+                        и поддержкой Hi-Res audio. Идеальный звук в любой ситуации.
+                    </p>
+                    
+                    <!-- РЕЙТИНГ: доступный + без кастомного CSS -->
+                    <div class="flex items-center gap-1 my-1" aria-label="Рейтинг: 4.5 из 5 звёзд">
+                        <!-- 4 полные звезды: цвет через Tailwind-утилиты -->
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <!-- Половина звезды -->
+                        <i class="fas fa-star-half-alt text-amber-400"></i>
+                        <span class="text-gray-500 text-sm ml-2">(89 отзывов)</span>
+                    </div>
+                    <!-- Скрытый текст для скринридеров (доп. доступность) -->
+                    <span class="sr-only">4.5 звезды из 5</span>
+                    
+                    <!-- Цена -->
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-3xl font-bold text-blue-600">$99</span>
+                        <span class="text-gray-400 line-through text-lg">$149</span>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">-34%</span>
+                    </div>
+                    
+                    <!-- КНОПКА: класс btn-primary вместо 10+ утилит -->
+                    <button class="btn-primary" 
+                            role="button" 
+                            aria-label="Добавить товар в корзину">
+                        <i class="fas fa-shopping-cart"></i>
+                        В корзину
+                    </button>
+                    
+                    <p class="text-xs text-gray-400 mt-2 text-center md:text-left">
+                        <i class="fas fa-truck"></i> Быстрая доставка · <i class="fas fa-undo-alt"></i> Возврат 30 дней
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+</body>
+</html>
