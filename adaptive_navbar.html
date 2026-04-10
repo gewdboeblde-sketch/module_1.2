@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный navbar - Mobile First</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+
+    <nav class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- Контейнер: логотип + гамбургер (мобилка) -->
+            <div class="flex justify-between items-center py-4">
+                
+                <!-- Логотип -->
+                <div class="text-xl font-bold text-gray-800">
+                    MySite
+                </div>
+                
+                <!-- Гамбургер (виден на мобилке, скрыт на десктопе) -->
+                <button id="menu-btn" class="block md:hidden text-gray-700 text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <!-- Десктопное меню (горизонтальное, справа) -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Главная</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">О нас</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Услуги</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Контакты</a>
+                </div>
+            </div>
+            
+            <!-- Мобильное меню (вертикальное, скрыто по умолчанию) -->
+            <div id="mobile-menu" class="hidden md:hidden flex-col pb-4 space-y-3">
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 block py-2">Главная</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 block py-2">О нас</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 block py-2">Услуги</a>
+                <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 block py-2">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
